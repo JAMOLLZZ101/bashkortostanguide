@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Интерактивный путеводитель по Башкортостану</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- ЯРЛЫК ДЛЯ ВЫЗОВА МЕНЮ ГОРДОВ -->
+    <button id="sidebar-toggle" class="sidebar-badge">🏙 Города</button>
+
+    <!-- ВЫЕЗЖАЮЩАЯ ПАНЕЛЬ (Из точки А в Б) -->
+    <nav id="sidebar" class="sidebar-panel">
+        <h3>Выберите город</h3>
+        <button class="city-btn active" data-target="main-page">🏠 Главная</button>
+        <button class="city-btn" data-target="city-oktyabrsky">Октябрьский</button>
+        <button class="city-btn" data-target="city-sterlitamak">Стерлитамак</button>
+        <button class="city-btn" data-target="city-ufa">Уфа</button>
+    </nav>
+
+    <!-- ОСНОВНОЙ КОНТЕНТ-КОНТЕЙНЕР -->
+    <main class="content-container">
+
+        <!-- ГЛАВНАЯ СТРАНИЦА -->
+        <section id="main-page" class="page-view active">
+            <div class="welcome-block">
+                <h1>Интерактивный веб-путеводитель</h1>
+                <h2>по ключевым городам Республики Башкортостан</h2>
+                <p>Добро пожаловать в проект по развитию внутреннего туризма! Нажмите на ярлык «Города» сбоку, чтобы начать путешествие по удивительным местам нашей республики.</p>
+            </div>
+        </section>
+
+        <!-- СТРАНИЦА: ОКТЯБРЬСКИЙ -->
+        <section id="city-oktyabrsky" class="page-view">
+            <h2>Достопримечательности г. Октябрьский</h2>
+            <div class="accordion-list">
+                
+                <!-- ОБЪЕКТ 1 -->
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <span class="item-title">Гора Нарыш-Тау</span>
+                        <span class="arrow">▼</span>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="content-inner">
+                            <div class="photo-slider">
+                                <img src="img/narysh1.jpg" alt="Нарыш-Тау">
+                            </div>
+                            <div class="text-info">
+                                <h3>Суть объекта</h3>
+                                <p>Высокая живописная гора, являющаяся визитной карточкой Октябрьского. Отличная смотровая площадка с видом на весь город и долину реки Ик.</p>
+                                <h3>Историческая ценность и местоположение</h3>
+                                <p>Связана с историей открытия Туймазинского нефтяного месторождения. На склонах горы установлены исторические скважины-первооткрывательницы башкирской нефти («Бабушка»). Локация: северо-восточная окраина города.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ОБЪЕКТ 2 -->
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <span class="item-title">Парк культуры и отдыха им. Ю. Гагарина</span>
+                        <span class="arrow">▼</span>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="content-inner">
+                            <div class="photo-slider">
+                                <img src="img/gagarin1.jpg" alt="Парк Гагарина">
+                            </div>
+                            <div class="text-info">
+                                <h3>Суть объекта</h3>
+                                <p>Главное зеленое пространство и центр притяжения для жителей и гостей города с аттракционами, аллеями и зонами отдыха.</p>
+                                <h3>Историческая ценность и местоположение</h3>
+                                <p>Заложен в советские годы, пережил масштабную модернизацию, став образцом современного благоустройства общественных территорий Башкортостана. Локация: центр города.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- СТРАНИЦА: СТЕРЛИТАМАК -->
+        <section id="city-sterlitamak" class="page-view">
+            <h2>Достопримечательности г. Стерлитамак</h2>
+            <div class="accordion-list">
+                <!-- Сюда вставляются аналогичные accordion-item -->
+            </div>
+        </section>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
