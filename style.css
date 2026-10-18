@@ -31,8 +31,9 @@ body {
 /* ПАНЕЛЬ ГОРОДОВ (Точка А: скрыта за левым краем) */
 .sidebar-panel {
     position: fixed;
-    top: 0; left: -260px; /* Сдвинута влево */
+    top: 70; left: -260px; /* Сдвинута влево */
     width: 220px; height: 100vh;
+    height: calc(100vh - 70px);
     background: #fff;
     box-shadow: 4px 0 15px rgba(0,0,0,0.15);
     z-index: 99;
