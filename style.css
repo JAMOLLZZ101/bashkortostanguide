@@ -31,9 +31,10 @@ body {
 /* ПАНЕЛЬ ГОРОДОВ (Точка А: скрыта за левым краем) */
 .sidebar-panel {
     position: fixed;
-    top: 70; left: -260px; /* Сдвинута влево */
-    width: 220px; height: 100vh;
-    height: calc(100vh - 70px);
+    top: 70px; /* ИЗМЕНИ ЗДЕСЬ: вместо 0 поставь 70px (или больше, если кнопка крупная) */
+    left: -260px; 
+    width: 220px; 
+    height: calc(100vh - 70px); /* ДОБАВЬ ЭТУ СТРОКУ: чтобы панель не уходила за нижний край экрана */
     background: #fff;
     box-shadow: 4px 0 15px rgba(0,0,0,0.15);
     z-index: 99;
@@ -41,7 +42,7 @@ body {
     display: flex;
     flex-direction: column;
     gap: 12px;
-    transition: left var(--speed) ease; /* Плавное перемещение в точку Б */
+    transition: left var(--speed) ease;
 }
 
 /* Состояние панели, когда она открыта (Точка Б) */
