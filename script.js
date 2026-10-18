@@ -4,7 +4,7 @@ const toggleBtn = document.getElementById('sidebar-toggle');
 
 toggleBtn.addEventListener('click', () => {
     sidebar.classList.toggle('open');
-    toggleBtn.innerText = sidebar.classList.contains('open') ? '◀ Скрыть' : '🏙 Города';
+    toggleBtn.innerText = sidebar.classList.contains('open') ? '◀ Скрыть' : 'Города';
 });
 
 // 2. ПЕРЕКЛЮЧЕНИЕ СТИЛИЗИРОВАННЫХ СТРАНИЦ ГОРОДОВ
@@ -32,7 +32,7 @@ cityButtons.forEach(btn => {
 
         // Закрываем меню после выбора города (для удобства)
         sidebar.classList.remove('open');
-        toggleBtn.innerText = '🏙 Города';
+        toggleBtn.innerText = 'Города';
     });
 });
 
