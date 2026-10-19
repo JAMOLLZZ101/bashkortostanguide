@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Интерактивный путеводитель по Башкортостану</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://unpkg.com" />
 </head>
 <body>
 
@@ -37,10 +38,13 @@
         <!-- СТРАНИЦА: ОКТЯБРЬСКИЙ -->
         <section id="city-oktyabrsky" class="page-view">
             <h2>Достопримечательности г. Октябрьский</h2>
+
+            <div id="map-oktyabrsky" class="city-map"></div>
+            
             <div class="accordion-list">
                 
                 <!-- ОБЪЕКТ 1 -->
-                <div class="accordion-item">
+                <div class="accordion-item" id="narysh-tau">
                     <div class="accordion-header">
                         <span class="item-title">Гора Нарыш-Тау</span>
                         <span class="arrow">▼</span>
@@ -61,7 +65,7 @@
                 </div>
 
                 <!-- ОБЪЕКТ 2 -->
-                <div class="accordion-item">
+                <div class="accordion-item" id="gagarin-park">
                     <div class="accordion-header">
                         <span class="item-title">Парк культуры и отдыха им. Ю. Гагарина</span>
                         <span class="arrow">▼</span>
@@ -119,7 +123,7 @@
                 </div>
 
     </main>
-
+    <script src="https://unpkg.com"></script>
     <script src="script.js"></script>
 </body>
 </html>
