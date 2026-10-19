@@ -103,14 +103,15 @@ body {
 }
 
 .page-view {
-    display: none;
+    height: 0;
+    overflow: hidden;
     opacity: 0;
     transition: opacity var(--speed) ease-in-out;
 }
 
-/* Плавное проявление активного экрана */
 .page-view.active {
-    display: block;
+    height: auto;
+    overflow: visible;
     opacity: 1;
 }
 
