@@ -112,18 +112,12 @@ function initOktyabrskyMap() {
 let oktyabrskyMapInitialized = false;
 let oMapInstance = null;
 
+// Замени блок клика на этот чистый вариант в самом низу script.js
 document.querySelectorAll('.city-btn').forEach(btn => {
     btn.addEventListener('click', () => {
         const target = btn.getAttribute('data-target');
         
         if (target === 'city-oktyabrsky') {
-            // ПРОВЕРКА: Если объект L еще не создан, ждем 200мс и пробуем снова
-            if (typeof L === 'undefined') {
-                console.log("Leaflet еще загружается, ждем...");
-                setTimeout(() => btn.click(), 200); // Рекурсивный триггер клика
-                return;
-            }
-
             if (!oktyabrskyMapInitialized) {
                 setTimeout(() => {
                     oMapInstance = initOktyabrskyMap();
@@ -138,4 +132,6 @@ document.querySelectorAll('.city-btn').forEach(btn => {
             }
         }
     });
+});
+
 });
