@@ -4,6 +4,7 @@ const toggleBtn = document.getElementById('sidebar-toggle');
 
 toggleBtn.addEventListener('click', () => {
     sidebar.classList.toggle('open');
+    // Теперь только меняем текст, физику перемещения делает один класс .open
     toggleBtn.innerText = sidebar.classList.contains('open') ? '◀ Скрыть' : 'Города';
 });
 
