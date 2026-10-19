@@ -116,19 +116,26 @@ document.querySelectorAll('.city-btn').forEach(btn => {
     btn.addEventListener('click', () => {
         const target = btn.getAttribute('data-target');
         
-        // Если пользователь выбрал Октябрьский и карта еще не создана
-        if (target === 'city-oktyabrsky' && !oktyabrskyMapInitialized) {
-            // Небольшой таймаут, чтобы вкладка успела стать видимой (display: block)
-            setTimeout(() => {
-                oMapInstance = initOktyabrskyMap();
-                oktyabrskyMapInitialized = true;
-            }, 100);
-        } else if (target === 'city-oktyabrsky' && oktyabrskyMapInitialized) {
-            // Если карта уже создана, обновляем её размеры, чтобы плитка не поплыла
-            setTimeout(() => {
-                oMapInstance.invalidateSize();
-            }, 100);
+        if (target === 'city-oktyabrsky') {
+            // ПРОВЕРКА: Если объект L еще не создан, ждем 200мс и пробуем снова
+            if (typeof L === 'undefined') {
+                console.log("Leaflet еще загружается, ждем...");
+                setTimeout(() => btn.click(), 200); // Рекурсивный триггер клика
+                return;
+            }
+
+            if (!oktyabrskyMapInitialized) {
+                setTimeout(() => {
+                    oMapInstance = initOktyabrskyMap();
+                    oktyabrskyMapInitialized = true;
+                }, 100);
+            } else {
+                setTimeout(() => {
+                    if (oMapInstance) {
+                        oMapInstance.invalidateSize();
+                    }
+                }, 300);
+            }
         }
     });
 });
-
