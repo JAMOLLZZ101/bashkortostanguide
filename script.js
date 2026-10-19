@@ -53,3 +53,82 @@ accordionHeaders.forEach(header => {
         currentItem.classList.toggle('expanded');
     });
 });
+// Функция инициализации карты для Октябрьского
+function initOktyabrskyMap() {
+    // Координаты центра Октябрьского [широта, долгота] и масштаб (13)
+    const map = L.map('map-oktyabrsky').setView([54.4812, 53.4710], 13);
+
+    // Подключаем бесплатные красивые карты (например, OpenStreetMap)
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '© OpenStreetMap'
+    }).addTo(map);
+
+    // База данных маркеров для карты
+    const locations = [
+        {
+            name: "Гора Нарыш-Тау",
+            coords: [54.4988, 53.5042], // Реальные координаты горы
+            targetId: "narysh-tau"       // ID аккордеона, который нужно открыть
+        },
+        {
+            name: "Парк им. Ю. Гагарина",
+            coords: [54.4751, 53.4475], // Реальные координаты парка
+            targetId: "gagarin-park"     // ID аккордеона, который нужно открыть
+        }
+    ];
+
+    // Рендерим маркеры на карте через цикл
+    locations.forEach(loc => {
+        const marker = L.marker(loc.coords).addTo(map);
+        
+        // Всплывашка при наведении на маркер
+        marker.bindTooltip(loc.name);
+
+        // ГЕЙМДЕВ-ЛОГИКА: Клик по маркеру открывает UI островка
+        marker.on('click', () => {
+            const targetAccordion = document.getElementById(loc.targetId);
+            
+            if (targetAccordion) {
+                // 1. Закрываем все остальные открытые островки
+                document.querySelectorAll('.accordion-item').forEach(item => {
+                    item.classList.remove('expanded');
+                });
+
+                // 2. Раскрываем наш целевой островок
+                targetAccordion.classList.add('expanded');
+
+                // 3. Плавно перемещаем камеру (скроллим страницу) к этому островку
+                targetAccordion.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        });
+    });
+
+    // Фикс для корректного рендера карты внутри скрытых SPA-вкладок
+    // Карты часто ломаются, если инициализируются в невидимом блоке display:none
+    return map;
+}
+
+// Запускаем инициализацию карты при клике на кнопку города в меню
+let oktyabrskyMapInitialized = false;
+let oMapInstance = null;
+
+document.querySelectorAll('.city-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+        const target = btn.getAttribute('data-target');
+        
+        // Если пользователь выбрал Октябрьский и карта еще не создана
+        if (target === 'city-oktyabrsky' && !oktyabrskyMapInitialized) {
+            // Небольшой таймаут, чтобы вкладка успела стать видимой (display: block)
+            setTimeout(() => {
+                oMapInstance = initOktyabrskyMap();
+                oktyabrskyMapInitialized = true;
+            }, 100);
+        } else if (target === 'city-oktyabrsky' && oktyabrskyMapInitialized) {
+            // Если карта уже создана, обновляем её размеры, чтобы плитка не поплыла
+            setTimeout(() => {
+                oMapInstance.invalidateSize();
+            }, 100);
+        }
+    });
+});
+
