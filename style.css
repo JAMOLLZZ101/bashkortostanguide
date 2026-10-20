@@ -13,26 +13,12 @@ body {
     overflow-x: hidden;
 }
 
-/* ЯРЛЫК СБОКУ */
-.sidebar-badge {
-    position: fixed;
-    top: 20px; left: 0;
-    z-index: 100;
-    background: var(--primary);
-    color: #fff; border: none;
-    padding: 12px 20px;
-    border-radius: 0 8px 8px 0;
-    cursor: pointer;
-    font-weight: bold;
-    box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
-    transition: left var(--speed) ease;
-}
-
-/* ПАНЕЛЬ ГОРОДОВ (Точка А: скрыта за левым краем) */
 .sidebar-panel {
     position: fixed;
-    top: 0; left: -260px; /* Сдвинута влево */
-    width: 220px; height: 100vh;
+    top: 0; 
+    left: -260px; /* Полносью скрыта за экраном (ширина 220px + padding 40px) */
+    width: 220px; 
+    height: 100vh; /* На всю высоту экрана */
     background: #fff;
     box-shadow: 4px 0 15px rgba(0,0,0,0.15);
     z-index: 99;
@@ -40,14 +26,28 @@ body {
     display: flex;
     flex-direction: column;
     gap: 12px;
-    transition: left var(--speed) ease; /* Плавное перемещение в точку Б */
+    transition: left var(--speed) ease; /* Плавный ход всей конструкции */
 }
 
-/* Состояние панели, когда она открыта (Точка Б) */
+/* СОСТОЯНИЕ ОТКРЫТО */
 .sidebar-panel.open {
-    left: 0;
+    left: 0; /* Выезжает в ноль, и кнопка едет вместе с ней */
 }
 
+/* ЯРЛЫК (Теперь позиционируется ОТНОСИТЕЛЬНО панели) */
+.sidebar-badge {
+    position: absolute; /* Абсолют внутри fixed-панели */
+    top: 20px; 
+    right: -90px; /* Выталкиваем кнопку наружу на её собственную ширину */
+    background: var(--primary);
+    color: #fff; border: none;
+    padding: 12px 20px;
+    border-radius: 0 8px 8px 0;
+    cursor: pointer;
+    font-weight: bold;
+    box-shadow: 4px 2px 10px rgba(0,0,0,0.15);
+    /* transition для left здесь больше НЕ НУЖЕН, кнопка привязана намертво */
+}
 /* Сдвиг ярлыка, когда панель открыта */
 .sidebar-panel.open ~ #sidebar-toggle {
     left: 260px;
