@@ -50,6 +50,17 @@ body {
     /* transition для left здесь больше НЕ НУЖЕН, кнопка привязана намертво */
 }
 
+
+/* Состояние панели, когда она открыта (Точка Б) */
+.sidebar-panel.open {
+    left: 0;
+}
+
+/* Сдвиг ярлыка, когда панель открыта */
+.sidebar-panel.open ~ #sidebar-toggle {
+    left: 260px;
+}
+
 .city-btn {
     background: #eef2f1;
     border: none; padding: 12px;
@@ -137,5 +148,8 @@ body {
     max-height: 1000px; /* Достаточный запас по высоте */
 }
 .accordion-item.expanded .arrow {
+    transform: rotate(180deg);
+}
+
     transform: rotate(180deg);
 }
