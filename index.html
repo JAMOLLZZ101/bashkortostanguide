@@ -4,28 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Интерактивный путеводитель по Башкортостану</title>
-
-    <!-- ПОДКЛЮЧАЕМ КАРТУ ЛОКАЛЬНО В HEAD (Убедись, что скачал файлы leaflet.css и leaflet.js в проект) -->
-    <link rel="stylesheet" href="leaflet.css">
-    <script src="leaflet.js"></script>
-
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" type="image/png" href="favicon.png">
 </head>
 <body>
 
-    <!-- ВЫЕЗЖАЮЩАЯ ПАНЕЛЬ -->
+    <!-- ЯРЛЫК ДЛЯ ВЫЗОВА МЕНЮ ГОРДОВ -->
+    <button id="sidebar-toggle" class="sidebar-badge">🏙 Города</button>
+
+    <!-- ВЫЕЗЖАЮЩАЯ ПАНЕЛЬ (Из точки А в Б) -->
     <nav id="sidebar" class="sidebar-panel">
         <h3>Выберите город</h3>
-        <button class="city-btn active" data-target="main-page">Главная</button>
-        <button class="city-btn" data-target="city-ufa">Уфа</button>
-        <button class="city-btn" data-target="city-sterlitamak">Стерлитамак</button>
+        <button class="city-btn active" data-target="main-page">🏠 Главная</button>
         <button class="city-btn" data-target="city-oktyabrsky">Октябрьский</button>
-        <button class="city-btn" data-target="city-salavat">Салават</button>
-        <button class="city-btn" data-target="city-neftekamsk">Нефтекамск</button>
-        <button class="city-btn" data-target="city-durtuli">Дюртюли</button>
-
-        <button id="sidebar-toggle" class="sidebar-badge">Города</button>
+        <button class="city-btn" data-target="city-sterlitamak">Стерлитамак</button>
+        <button class="city-btn" data-target="city-ufa">Уфа</button>
     </nav>
 
     <!-- ОСНОВНОЙ КОНТЕНТ-КОНТЕЙНЕР -->
@@ -36,20 +28,17 @@
             <div class="welcome-block">
                 <h1>Интерактивный веб-путеводитель</h1>
                 <h2>по ключевым городам Республики Башкортостан</h2>
-                <p>Добро пожаловать в проект по развитию внутреннего туризма! Нажмите на ярлык «Города», чтобы начать путешествие по удивительным местам нашей республики.</p>
+                <p>Добро пожаловать в проект по развитию внутреннего туризма! Нажмите на ярлык «Города» сбоку, чтобы начать путешествие по удивительным местам нашей республики.</p>
             </div>
         </section>
 
         <!-- СТРАНИЦА: ОКТЯБРЬСКИЙ -->
         <section id="city-oktyabrsky" class="page-view">
             <h2>Достопримечательности г. Октябрьский</h2>
-
-            <div id="map-oktyabrsky" class="city-map"></div>
-            
             <div class="accordion-list">
                 
                 <!-- ОБЪЕКТ 1 -->
-                <div class="accordion-item" id="narysh-tau">
+                <div class="accordion-item">
                     <div class="accordion-header">
                         <span class="item-title">Гора Нарыш-Тау</span>
                         <span class="arrow">▼</span>
@@ -70,7 +59,7 @@
                 </div>
 
                 <!-- ОБЪЕКТ 2 -->
-                <div class="accordion-item" id="gagarin-park">
+                <div class="accordion-item">
                     <div class="accordion-header">
                         <span class="item-title">Парк культуры и отдыха им. Ю. Гагарина</span>
                         <span class="arrow">▼</span>
@@ -100,38 +89,10 @@
                 <!-- Сюда вставляются аналогичные accordion-item -->
             </div>
         </section>
-        
-        <!-- СТРАНИЦА: УФА -->
-        <section id="city-ufa" class="page-view">
-            <h2>Достопримечательности г. Уфа</h2>
-            <div class="accordion-list">
-                
-                <!-- ОБЪЕКТ 1 -->
-                <div class="accordion-item">
-                    <div class="accordion-header">
-                        <span class="item-title">Статуя Салавата Юлаева</span>
-                        <span class="arrow">▼</span>
-                    </div>
-                    <div class="accordion-content">
-                        <div class="content-inner">
-                            <div class="photo-slider">
-                                <img src="img/salavatyul.jpg" alt="Статуя Салавата Юлаева">
-                            </div>
-                            <div class="text-info">
-                                <h3>Суть объекта</h3>
-                                <p>Самая большая конная статуя в России, возвышающаяся на крутом утесе над рекой Белой. Это главный символ башкирского народа, притягивающий тысячи туристов своей монументальностью и панорамным видом на забельские дали.</p>
-                                <h3>Историческая ценность и местоположение</h3>
-                                <p>Памятник открыт в 1967 году (скульптор С. Д. Тавасиев). Он посвящен национальному герою Башкортостана и поэту-импровизатору Салавату Юлаеву. Уникальность 40-тонной конструкции заключается в том, что она держится всего на трех опорных точках. Локация: г. Уфа, площадь имени Салавата Юлаева.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
-            </div> <!-- ФИКС: Закрыли accordion-list Уфы -->
-        </section> <!-- ФИКС: Закрыли section Уфы -->
+    </main>
 
-    </main> <!-- Закрыли контент-контейнер -->
-                
     <script src="script.js"></script>
 </body>
 </html>
+
