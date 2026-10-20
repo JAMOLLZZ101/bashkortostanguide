@@ -4,9 +4,9 @@ const toggleBtn = document.getElementById('sidebar-toggle');
 
 toggleBtn.addEventListener('click', () => {
     sidebar.classList.toggle('open');
-    toggleBtn.innerText = sidebar.classList.contains('open') ? '◀ Скрыть' : '🏙 Города';
+    // Теперь только меняем текст, физику перемещения делает один класс .open
+    toggleBtn.innerText = sidebar.classList.contains('open') ? '◀ Скрыть' : 'Города';
 });
-
 // 2. ПЕРЕКЛЮЧЕНИЕ СТИЛИЗИРОВАННЫХ СТРАНИЦ ГОРОДОВ
 const cityButtons = document.querySelectorAll('.city-btn');
 const pageViews = document.querySelectorAll('.page-view');
