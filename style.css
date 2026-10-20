@@ -36,19 +36,38 @@ body {
 }
 
 /* ЯРЛЫК (Теперь позиционируется ОТНОСИТЕЛЬНО панели) */
+/* ЯРЛЫК (Жестко фиксируем габариты и выносим наружу) */
 .sidebar-badge {
-    position: absolute; /* Абсолют внутри fixed-панели */
-    top: 20px; 
-    right: -90px; /* Выталкиваем кнопку наружу на её собственную ширину */
+    position: absolute;
+    top: 20px;
+    
+    /* ФИКС ЗАЛЕЗАНИЯ: Привязываем левый край кнопки к правому краю панели */
+    left: 100%; 
+    
+    /* ФИКС РАЗМЕРА: Запрещаем тексту переноситься и менять ширину кнопки при смене букв */
+    white-space: nowrap; 
+    width: 110px; /* Жестко задаем ширину, чтобы она не «прыгала» при смене текста */
+    text-align: center;
+    
     background: var(--primary);
-    color: #fff; border: none;
-    padding: 12px 20px;
+    color: #fff; 
+    border: none;
+    padding: 12px 0; /* Убираем боковые паддинги, ширину теперь держит свойство width */
     border-radius: 0 8px 8px 0;
     cursor: pointer;
     font-weight: bold;
     box-shadow: 4px 2px 10px rgba(0,0,0,0.15);
-    /* transition для left здесь больше НЕ НУЖЕН, кнопка привязана намертво */
+    
+    /* Убираем любые дефолтные эффекты браузера при клике */
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
 }
+
+/* На всякий случай убираем активные стили, если они где-то прописаны */
+.sidebar-badge:active, .sidebar-badge:focus {
+    outline: none;
+}
+
 
 
 /* Состояние панели, когда она открыта (Точка Б) */
