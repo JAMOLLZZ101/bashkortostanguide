@@ -32,7 +32,7 @@ cityButtons.forEach(btn => {
 
         // Закрываем меню после выбора города (для удобства)
         sidebar.classList.remove('open');
-        toggleBtn.innerText = '🏙 Города';
+        toggleBtn.innerText = 'Города';
     });
 });
 
