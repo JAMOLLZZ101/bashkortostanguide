@@ -1,8 +1,8 @@
 :root {
-    --primary: #1b4d3e; /* Фирменный темно-зеленый цвет */
+    --primary: #1b4d3e;
     --bg: #f4f7f6;
     --text: #333;
-    --speed: 0.4s; /* Скорость анимации выезда и раскрытия */
+    --speed: 0.4s; /* Средняя скорость анимаций */
 }
 
 body {
@@ -13,17 +13,26 @@ body {
     overflow-x: hidden;
 }
 
-/* ==========================================
-   ВЫЕЗЖАЮЩАЯ ПАНЕЛЬ И ЯРЛЫК-КНОПКА
-   ========================================== */
+/* ЯРЛЫК СБОКУ */
+.sidebar-badge {
+    position: fixed;
+    top: 20px; left: 0;
+    z-index: 100;
+    background: var(--primary);
+    color: #fff; border: none;
+    padding: 12px 20px;
+    border-radius: 0 8px 8px 0;
+    cursor: pointer;
+    font-weight: bold;
+    box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+    transition: left var(--speed) ease;
+}
 
-/* Панель (Точка А: полностью скрыта за левым краем экрана) */
+/* ПАНЕЛЬ ГОРОДОВ (Точка А: скрыта за левым краем) */
 .sidebar-panel {
     position: fixed;
-    top: 0; 
-    left: -260px; /* Сдвинута влево на свою ширину + отступы */
-    width: 220px; 
-    height: 100vh; /* На всю высоту экрана */
+    top: 0; left: -260px; /* Сдвинута влево */
+    width: 220px; height: 100vh;
     background: #fff;
     box-shadow: 4px 0 15px rgba(0,0,0,0.15);
     z-index: 99;
@@ -31,79 +40,49 @@ body {
     display: flex;
     flex-direction: column;
     gap: 12px;
-    transition: left var(--speed) ease; /* Плавный ход всей конструкции */
+    transition: left var(--speed) ease; /* Плавное перемещение в точку Б */
 }
 
-/* Состояние панели, когда JS добавляет класс .open (Точка Б) */
+/* Состояние панели, когда она открыта (Точка Б) */
 .sidebar-panel.open {
-    left: 0; 
+    left: 0;
 }
 
-/* Ярлык «Города» — жестко привязан к правому краю панели снаружи */
-.sidebar-badge {
-    position: absolute;
-    top: 20px;
-    left: 100%; /* Встает ровно там, где кончается панель */
-    white-space: nowrap;
-    width: 110px; /* Фиксированная ширина, чтобы кнопка не прыгала от смены текста */
-    text-align: center;
-    background: var(--primary);
-    color: #fff; 
-    border: none;
-    padding: 12px 0;
-    border-radius: 0 8px 8px 0;
-    cursor: pointer;
-    font-weight: bold;
-    box-shadow: 4px 2px 10px rgba(0,0,0,0.15);
-    outline: none;
-    -webkit-tap-highlight-color: transparent;
+/* Сдвиг ярлыка, когда панель открыта */
+.sidebar-panel.open ~ #sidebar-toggle {
+    left: 260px;
 }
 
 .city-btn {
     background: #eef2f1;
-    border: none; 
-    padding: 12px;
-    text-align: left; 
-    border-radius: 6px;
-    cursor: pointer; 
-    font-size: 1rem;
+    border: none; padding: 12px;
+    text-align: left; border-radius: 6px;
+    cursor: pointer; font-size: 1rem;
     transition: background 0.2s;
 }
-
 .city-btn:hover, .city-btn.active {
-    background: var(--primary); 
-    color: white;
+    background: var(--primary); color: white;
 }
 
-/* ==========================================
-   ЭКРАНЫ СТРАНИЦ ГОРОДОВ (SPA)
-   ========================================== */
+/* ЭКРАНЫ СТРАНИЦ */
 .content-container {
     padding: 40px 40px 40px 80px;
-    max-width: 900px; 
-    margin: 0 auto;
-}
-
-.welcome-block {
-    text-align: center;
-    margin-top: 10vh;
+    max-width: 900px; margin: 0 auto;
 }
 
 .page-view {
-    display: none; /* По умолчанию все страницы скрыты */
+    display: none;
     opacity: 0;
     transition: opacity var(--speed) ease-in-out;
 }
 
-/* Показываем только ту страницу, у которой есть класс .active */
+/* Плавное проявление активного экрана */
 .page-view.active {
     display: block;
     opacity: 1;
 }
 
-/* ==========================================
-   СПИСОК-АККОРДЕОН (КАРТОЧКИ МЕСТ)
-   ========================================== */
+/* СПИСОК-АККОРДЕОН (Разворачивающиеся элементы) */
 .accordion-list {
     display: flex;
     flex-direction: column;
@@ -135,13 +114,14 @@ body {
     transition: transform var(--speed);
 }
 
-/* Контент внутри карточки (по умолчанию сжат в 0 пикселей) */
+/* Внутренний контейнер контента (по умолчанию высота 0) */
 .accordion-content {
     max-height: 0;
     overflow: hidden;
     transition: max-height var(--speed) ease-out; /* Плавное раскрытие сверху вниз */
 }
 
+/* Стилизация внутренностей развернутого блока */
 .content-inner {
     padding: 20px;
     border-top: 1px solid #eee;
@@ -151,29 +131,14 @@ body {
 }
 
 .photo-slider img {
-    width: 100%; 
-    max-height: 350px;
-    object-fit: cover; 
-    border-radius: 6px;
+    width: 100%; max-height: 350px;
+    object-fit: cover; border-radius: 6px;
 }
 
-.text-info h3 {
-    color: var(--primary);
-    margin-top: 15px;
-    margin-bottom: 5px;
-}
-
-.text-info p {
-    margin: 0 0 10px 0;
-    line-height: 1.5;
-}
-
-/* Когда JS добавляет класс .expanded, карточка плавно расширяется */
+/* Класс, который JS будет вешать на раскрытый элемент */
 .accordion-item.expanded .accordion-content {
-    max-height: 1200px; /* Запас высоты, чтобы влезли и тексты, и фотки */
+    max-height: 1000px; /* Достаточный запас по высоте */
 }
-
-/* Поворачиваем стрелочку при раскрытии */
 .accordion-item.expanded .arrow {
     transform: rotate(180deg);
 }
