@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Интерактивный путеводитель по Башкортостану</title>
+
+    <link rel="stylesheet" href="https://unpkg.com" />
+    <script src="https://unpkg.com"></script>
+    
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/png" href="favicon.png">
 </head>
@@ -24,22 +28,37 @@
     <!-- ОСНОВНОЙ КОНТЕНТ-КОНТЕЙНЕР -->
     <main class="content-container">
 
-        <!-- ГЛАВНАЯ СТРАНИЦА -->
+                <!-- ГЛАВНАЯ СТРАНИЦА -->
         <section id="main-page" class="page-view active">
-            <div class="welcome-block">
+            <!-- Блок видео-фона -->
+            <div class="video-bg-container">
+                <video autoplay loop muted playsinline class="video-bg">
+                    <source src="bg-video.mp4" type="video/mp4">
+                    Ваш браузер не поддерживает видео.
+                </video>
+                <div class="video-overlay"></div>
+            </div>
+
+            <!-- Текст в белой стеклянной рамке -->
+            <div class="welcome-card">
                 <h1>Интерактивный веб-путеводитель</h1>
                 <h2>по ключевым городам Республики Башкортостан</h2>
                 <p>Добро пожаловать в проект по развитию внутреннего туризма! Нажмите на ярлык «Города» сбоку, чтобы начать путешествие по удивительным местам нашей республики.</p>
             </div>
         </section>
 
-        <!-- СТРАНИЦА: ОКТЯБРЬСКИЙ -->
+
+               <!-- СТРАНИЦА: ОКТЯБРЬСКИЙ -->
         <section id="city-oktyabrsky" class="page-view">
             <h2>Достопримечательности г. Октябрьский</h2>
+            
+            <!-- Контейнер для карты -->
+            <div id="map-oktyabrsky" class="city-map"></div>
+            
             <div class="accordion-list">
                 
-                <!-- ОБЪЕКТ 1 -->
-                <div class="accordion-item">
+                <!-- ОБЪЕКТ 1 (Добавили id) -->
+                <div class="accordion-item" id="narysh-tau">
                     <div class="accordion-header">
                         <span class="item-title">Гора Нарыш-Тау</span>
                         <span class="arrow">▼</span>
@@ -59,8 +78,8 @@
                     </div>
                 </div>
 
-                <!-- ОБЪЕКТ 2 -->
-                <div class="accordion-item">
+                <!-- ОБЪЕКТ 2 (Добавили id) -->
+                <div class="accordion-item" id="gagarin-park">
                     <div class="accordion-header">
                         <span class="item-title">Парк культуры и отдыха им. Ю. Гагарина</span>
                         <span class="arrow">▼</span>
@@ -72,9 +91,9 @@
                             </div>
                             <div class="text-info">
                                 <h3>Суть объекта</h3>
-                                <p>Главное зеленое пространство и центр притяжения для жителей и гостей города с аттракционами, аллеями и зонами отдыха.</p>
+                                <p>Главное зеленое пространство и centre притяжения для жителей и гостей города с аттракционами, аллеями и зонами отдыха.</p>
                                 <h3>Историческая ценность и местоположение</h3>
-                                <p>Заложен в советские годы, пережил масштабную модернизацию, став образцом современного благоустройства общественных территорий Башкортостана. Локация: центр города.</p>
+                                <p>Заложен в советские годы, пережил масштабную модернизацию, став образцом современного благоустройства общественных территорий Башкортостана. Локация: centre города.</p>
                             </div>
                         </div>
                     </div>
@@ -82,6 +101,7 @@
 
             </div>
         </section>
+
 
         <!-- СТРАНИЦА: СТЕРЛИТАМАК -->
         <section id="city-sterlitamak" class="page-view">
