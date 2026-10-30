@@ -13,11 +13,11 @@ body {
     overflow-x: hidden;
 }
 
-/* ПАНЕЛЬ (Возвращаем во всю высоту) */
+/* ПАНЕЛЬ (Во всю высоту) */
 .sidebar-panel {
     position: fixed;
     top: 0; 
-    left: -260px; /* Полносью скрыта за экраном (ширина 220px + padding 40px) */
+    left: -260px; /* Полностью скрыта за экраном */
     width: 220px; 
     height: 100vh; /* На всю высоту экрана */
     background: #fff;
@@ -32,35 +32,75 @@ body {
 
 /* СОСТОЯНИЕ ОТКРЫТО */
 .sidebar-panel.open {
-    left: 0; /* Выезжает в ноль, и кнопка едет вместе с ней */
+    left: 0; 
 }
 
-/* ЯРЛЫК (Теперь позиционируется ОТНОСИТЕЛЬНО панели) */
 /* ЯРЛЫК (Жестко фиксируем габариты и выносим наружу) */
 .sidebar-badge {
     position: absolute;
     top: 20px;
-    
-    /* ФИКС ЗАЛЕЗАНИЯ: Привязываем левый край кнопки к правому краю панели */
-    left: 100%; 
-    
-    /* ФИКС РАЗМЕРА: Запрещаем тексту переноситься и менять ширину кнопки при смене букв */
+    left: 100%; /* Привязываем левый край кнопки к правому краю панели */
     white-space: nowrap; 
-    width: 110px; /* Жестко задаем ширину, чтобы она не «прыгала» при смене текста */
+    width: 110px; /* Жестко задаем ширину, чтобы не «прыгала» */
     text-align: center;
+    background: var(--primary);
+    color: #fff; 
+    border: none;
+    padding: 12px 0; 
+    border-radius: 0 8px 8px 0;
+    cursor: pointer;
+    font-weight: bold;
+    box-shadow: 4px 2px 10px rgba(0,0,0,0.15);
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+}
 
+.sidebar-badge:active, .sidebar-badge:focus {
+    outline: none;
+}
+
+.city-btn {
+    background: #eef2f1;
+    border: none; padding: 12px;
+    text-align: left; border-radius: 6px;
+    cursor: pointer; font-size: 1rem;
+    transition: background 0.2s;
+}
+.city-btn:hover, .city-btn.active {
+    background: var(--primary); color: white;
+}
+
+/* ЭКРАНЫ СТРАНИЦ */
+.content-container {
+    padding: 40px 40px 40px 80px;
+    max-width: 900px; margin: 0 auto;
+}
+
+.page-view {
+    display: none;
+    opacity: 0;
+    transition: opacity var(--speed) ease-in-out;
+}
+
+/* Плавное проявление активного экрана */
+.page-view.active {
+    display: block;
+    opacity: 1;
+}
+
+/* СТЕКЛЯННАЯ РАМКА ДЛЯ КАРТЫ (GLASSMORPHISM) */
 .map-glass-card {
     background: rgba(255, 255, 255, 0.5); /* Полупрозрачный белый фон */
     backdrop-filter: blur(8px); /* Легкое размытие под рамкой */
     -webkit-backdrop-filter: blur(8px);
     border: 1px solid rgba(255, 255, 255, 0.4); /* Элегантный светлый контур */
-    padding: 20px; /* Отступы внутри рамки, создающие эффект паспарту */
+    padding: 20px; /* Отступы внутри рамки */
     border-radius: 16px; /* Красивые скругленные углы самой рамки */
     margin: 20px 0 35px 0;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08); /* Мягкая объемная тень */
 }
 
-/* Корректируем внутренний блок карты, чтобы он аккуратно сидел в рамке */
+/* Корректируем внутренний блок карты */
 .city-map {
     width: 100%;
     height: 350px;
@@ -75,22 +115,20 @@ body {
     display: block;
 }
 
-    
-/* Контейнер видео растягивается под размер главного экрана */
+/* ВИДЕО-ФОН ДЛЯ ГЛАВНОЙ СТРАНИЦЫ */
 .video-bg-container {
     position: absolute;
     top: 0; left: 0; 
     width: 100%; height: 100vh;
     overflow: hidden; 
-    z-index: -1; /* Уводим на задний план */
+    z-index: -1;
 }
 
 .video-bg {
     width: 100%; height: 100%; 
-    object-fit: cover; /* Видео масштабируется без искажений */
+    object-fit: cover;
 }
 
-/* Затемнение видео, чтобы белый текст читался идеально */
 .video-overlay {
     position: absolute;
     top: 0; left: 0; 
@@ -98,10 +136,10 @@ body {
     background: rgba(0, 0, 0, 0.4);
 }
 
-/* Белая матовая стеклянная карточка на главной (Glassmorphism) */
+/* Белая матовая стеклянная карточка на главной */
 .welcome-card {
-    background: rgba(255, 255, 255, 0.15); /* Полупрозрачный белый */
-    backdrop-filter: blur(12px); /* Размытие видео за рамкой */
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border: 1px solid rgba(255, 255, 255, 0.25);
     padding: 40px;
@@ -110,35 +148,70 @@ body {
     margin: 15vh auto 0 auto;
     text-align: center;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
-    color: #fff; /* Делаем текст белым */
+    color: #fff;
 }
 
 .welcome-card h1 { font-size: 2.2rem; margin-bottom: 10px; color: #fff; }
 .welcome-card h2 { font-size: 1.4rem; font-weight: 400; margin-bottom: 20px; color: #e0e0e0; border: none; }
 .welcome-card p { line-height: 1.6; font-size: 1.1rem; margin: 0; }
 
-    .map-glass-card {
-    background: rgba(255, 255, 255, 0.5); /* Полупрозрачный белый фон */
-    backdrop-filter: blur(8px); /* Легкое размытие под рамкой */
-    -webkit-backdrop-filter: blur(8px);
-    border: 1px solid rgba(255, 255, 255, 0.4); /* Элегантный светлый контур */
-    padding: 20px; /* Отступы внутри рамки, создающие эффект паспарту */
-    border-radius: 16px; /* Красивые скругленные углы самой рамки */
-    margin: 20px 0 35px 0;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08); /* Мягкая объемная тень */
+/* СПИСОК-АККОРДЕОН (Разворачивающиеся элементы) */
+.accordion-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
 }
 
-/* Корректируем внутренний блок карты, чтобы он аккуратно сидел в рамке */
-.city-map {
-    width: 100%;
-    height: 350px;
-    border-radius: 10px; /* Скругляем углы самой карты внутри рамки */
-    overflow: hidden; /* Скрываем острые углы iframe */
+.accordion-item {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    overflow: hidden;
 }
 
-.city-map iframe {
-    width: 100%;
-    height: 100%;
-    border: none;
-    display: block;
+.accordion-header {
+    background: #fff;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+    font-weight: bold;
+    font-size: 1.1rem;
+    border-left: 5px solid var(--primary);
+}
+
+.arrow {
+    transition: transform var(--speed);
+}
+
+/* Внутренний контейнер контента (по умолчанию высота 0) */
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height var(--speed) ease-out; /* Плавное раскрытие сверху вниз */
+}
+
+/* Стилизация внутренностей развернутого блока */
+.content-inner {
+    padding: 20px;
+    border-top: 1px solid #eee;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.photo-slider img {
+    width: 100%; max-height: 350px;
+    object-fit: cover; border-radius: 6px;
+}
+
+/* Класс, который JS будет вешать на раскрытый элемент */
+.accordion-item.expanded .accordion-content {
+    max-height: 1000px; /* Достаточный запас по высоте */
+}
+.accordion-item.expanded .arrow {
+    transform: rotate(180deg);
 }
