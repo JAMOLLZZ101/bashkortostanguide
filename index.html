@@ -10,7 +10,7 @@
 </head>
 <body>
     
-    <!-- ВЫЕЗЖАЮЩАЯ ПАНЕЛЬ (Из точки А в Б) -->
+    <!-- ВЫЕЗЖАЮЩАЯ ПАНЕЛЬ -->
     <nav id="sidebar" class="sidebar-panel">
         <h3>Выберите город</h3>
         <button class="city-btn active" data-target="main-page">Главная</button>
@@ -25,7 +25,7 @@
     <!-- ОСНОВНОЙ КОНТЕНТ-КОНТЕЙНЕР -->
     <main class="content-container">
 
-                <!-- ГЛАВНАЯ СТРАНИЦА -->
+        <!-- ГЛАВНАЯ СТРАНИЦА -->
         <section id="main-page" class="page-view active">
             <!-- Блок видео-фона -->
             <div class="video-bg-container">
@@ -44,23 +44,20 @@
             </div>
         </section>
 
-
-               <!-- СТРАНИЦА: ОКТЯБРЬСКИЙ -->
+        <!-- СТРАНИЦА: ОКТЯБРЬСКИЙ -->
         <section id="city-oktyabrsky" class="page-view">
             <h2>Достопримечательности г. Октябрьский</h2>
             
-            <!-- Контейнер для карты -->
-            <div id="map-oktyabrsky" class="city-map"></div>
+            <!-- ОДИН ИДЕАЛЬНЫЙ КОНТЕЙНЕР ДЛЯ КАРТЫ ЯНДЕКСА В РАМКЕ -->
             <div class="map-glass-card">
-        <div class="city-map">
-            <!-- Твой iframe из Яндекс.Конструктора (не забудь поставить width="100%") -->
-            <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A1518d5e73eea6b7332a8de125aae303e85cd2f78e8acc073f8d70f5350eba66b&amp;source=constructor" width="100%" height="350" frameborder="0"></iframe>
-        </div>
-    </div>
+                <div class="city-map">
+                    <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A1518d5e73eea6b7332a8de125aae303e85cd2f78e8acc073f8d70f5350eba66b&amp;source=constructor" width="100%" height="350" frameborder="0"></iframe>
+                </div>
+            </div>
             
             <div class="accordion-list">
                 
-                <!-- ОБЪЕКТ 1 (Добавили id) -->
+                <!-- ОБЪЕКТ 1 -->
                 <div class="accordion-item" id="narysh-tau">
                     <div class="accordion-header">
                         <span class="item-title">Гора Нарыш-Тау</span>
@@ -81,7 +78,7 @@
                     </div>
                 </div>
 
-                <!-- ОБЪЕКТ 2 (Добавили id) -->
+                <!-- ОБЪЕКТ 2 -->
                 <div class="accordion-item" id="gagarin-park">
                     <div class="accordion-header">
                         <span class="item-title">Парк культуры и отдыха им. Ю. Гагарина</span>
@@ -105,7 +102,6 @@
             </div>
         </section>
 
-
         <!-- СТРАНИЦА: СТЕРЛИТАМАК -->
         <section id="city-sterlitamak" class="page-view">
             <h2>Достопримечательности г. Стерлитамак</h2>
@@ -119,4 +115,3 @@
     <script src="script.js"></script>
 </body>
 </html>
-
