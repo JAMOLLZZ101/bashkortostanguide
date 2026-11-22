@@ -231,8 +231,8 @@ body {
     display: inline-block;
     margin-top: 15px;
     padding: 10px 20px;
-    background-color: #fff;
-    color: #000000;
+    background-color: #1C4B3B; 
+    color: #ffffff;          
     text-decoration: none;
     font-weight: bold;
     border-radius: 8px;
@@ -240,6 +240,5 @@ body {
 }
 
 .route-btn:hover {
-    background-color: #f2c200;
+    background-color: #14362B; /* Чуть более тёмный оттенок при наведении курсора */
 }
-
