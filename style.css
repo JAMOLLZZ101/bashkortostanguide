@@ -215,3 +215,20 @@ body {
 .accordion-item.expanded .arrow {
     transform: rotate(180deg);
 }
+
+.route-btn {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: #ffcc00; /* Фирменный желтый цвет Яндекса */
+    color: #000000;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 8px;
+    transition: background-color 0.2s ease;
+}
+
+.route-btn:hover {
+    background-color: #f2c200;
+}
+
