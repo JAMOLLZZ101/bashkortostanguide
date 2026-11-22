@@ -17,20 +17,32 @@ body {
 .sidebar-panel {
     position: fixed;
     top: 0; 
-    left: -260px; /* Полностью скрыта за экраном */
-    width: 220px; 
-    height: 100vh; /* На всю высоту экрана */
+    /* БЫЛО -260px. Так как панель стала шире (340px + 40px отступов = 380px), прячем её глубже: */
+    left: -380px; 
+    width: 340px; /* БЫЛО 220px — увеличили ширину для двух колонок */
+    height: 100vh; 
     background: #fff;
     box-shadow: 4px 0 15px rgba(0,0,0,0.15);
     z-index: 99;
     padding: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    transition: left var(--speed) ease; /* Плавный ход всей конструкции */
+    
+    /* ПЕРЕКЛЮЧАЕМ НА СЕТКУ В 2 СТОЛБЦА */
+    display: grid; 
+    grid-template-columns: 1fr 1fr; /* Две равные колонки */
+    align-content: start; /* Прижимаем все кнопки к верху, чтобы не растягивались по высоте */
+    gap: 10px;
+    
+    transition: left var(--speed) ease;
+    overflow-y: auto; /* На всякий случай оставляем скролл для низких экранов ноутбуков */
 }
 
-/* СОСТОЯНИЕ ОТКРЫТО */
+/* Заголовок «Выберите город» и кнопка «Главная» растягиваем на всю ширину (на оба столбца) */
+.sidebar-panel h3,
+.sidebar-panel .city-btn[data-target="main-page"] {
+    grid-column: span 2;
+}
+
+/* СОСТОЯНИЕ ОТКРЫТО (остается без изменений) */
 .sidebar-panel.open {
     left: 0; 
 }
